@@ -67,4 +67,4 @@ jobs:
         with:
           app-name: 'techconf-app'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_8E82CD5DCC2E4331A89AB51C9EE2B4E1 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_8B7BA1DB5210407888717E3774A50B9C }}
