@@ -63,9 +63,13 @@ Complete a month cost analysis of each Azure resource to give an estimate total 
 
 | Azure Resource | Service Tier | Monthly Cost |
 | ------------ | ------------ | ------------ |
-| *Azure Postgres Database* |     |              |
-| *Azure Service Bus*   |         |              |
-| ...                   |         |              |
+| *Azure Postgres Database* | Basic    |  21.30            |
+| *Azure Service Bus*   |   Basic      |  0.05            |
+| *Azure Service Plan*    |     Basic    |       12.41       |
+| *Azure Storage Account*    |     Standard StorageV2 (general purpose v2)    |       1.25       |
+| *Sendgrid*    |     Essentials 40K   |       14.95       |
+| *App service plan for Azure function*    |     F1    |       Free       |
 
+For Azure function The first 400,000 GB/s of execution and 1,000,000 executions are free which is more than enough for our application in production environment.
 ## Architecture Explanation
-This is a placeholder section where you can provide an explanation and reasoning for your architecture selection for both the Azure Web App and Azure Function.
+Web app is a good choice for provided python code because of low cost and maintainability. If not for the requirement of this project then I would look into other options for database because current monthly cost is too expensive in my view. Function app serves the specific purpose and it is also cost effective because of the consumtion based plan. Service bus queue is not needed for 5 attendees but considering the future use case it definitely adds to the robustness of webapp by moving long running task of sending emails as a background job.
