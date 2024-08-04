@@ -23,6 +23,14 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libssl-dev libffi-dev build-essential cmake
 
+      - name: Install CMake
+        run: |
+          sudo apt-get install -y cmake
+
+      - name: Install OpenSSL development libraries
+        run: |
+          sudo apt-get install -y libssl-dev
+
       - name: Navigate to web directory and set up virtual environment
         run: |
           cd web
@@ -33,7 +41,8 @@ jobs:
         run: |
           cd web
           source venv/bin/activate
-          pip install -r requirements.txt
+          pip install --upgrade pip
+          pip install -r requirements.txt --use-pep517
 
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
@@ -46,9 +55,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: python-app
-          path: |
-            release.zip
-            !venv/
+          path: release.zip
 
   deploy:
     runs-on: ubuntu-latest
