@@ -31,9 +31,9 @@ class Conference(db.Model):
 
 class Notification(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    status =  db.Column(db.Text, nullable=False)
-    message =  db.Column(db.Text)
-    subject =  db.Column(db.Text)
+    status = db.Column(db.Text, nullable=False)
+    message = db.Column(db.Text)
+    subject = db.Column(db.Text)
     submitted_date = db.Column(db.DateTime(timezone=True))
     completed_date = db.Column(db.DateTime(timezone=True))
 
